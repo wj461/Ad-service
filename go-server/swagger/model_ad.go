@@ -13,11 +13,11 @@ import (
 )
 
 type Ad struct {
-	Title string `json:"title"`
+	Title string `db:"title" json:"title"`
 
-	StartAt time.Time `json:"startAt"`
+	StartAt time.Time `db:"start_At" json:"startAt"`
 
-	EndAt time.Time `json:"endAt"`
+	EndAt time.Time `db:"end_at" json:"endAt"`
 
-	Conditions *Conditions `json:"conditions,omitempty"`
+	Conditions *Conditions `db:"condition" json:"conditions,omitempty"`
 }

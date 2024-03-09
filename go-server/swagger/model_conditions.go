@@ -9,11 +9,11 @@
 package swagger
 
 type Conditions struct {
-	AgeStart int32 `json:"ageStart,omitempty"`
+	AgeStart int32 `db:"age_start" json:"ageStart,omitempty"`
 
-	AgeEnd int32 `json:"ageEnd,omitempty"`
+	AgeEnd int32 `db:"age_end" json:"ageEnd,omitempty"`
 
-	Country []string `json:"country,omitempty"`
+	Country []string `db:"country" json:"country,omitempty"`
 
-	Platform []string `json:"platform,omitempty"`
+	Platform []string `db:"platform" json:"platform,omitempty"`
 }

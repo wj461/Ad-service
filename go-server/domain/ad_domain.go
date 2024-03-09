@@ -1,9 +1,11 @@
 package domain
 
+import "github.com/wj461/ad-service/swagger"
+
 type adRepository interface {
-	CreateAd(ad *Ad) error
+	CreateAd(ad *swagger.Ad) error
 }
 
 type adUsecase interface {
-	CreateAd(ad *Ad) error
+	CreateAd(ad *swagger.Ad) error
 }
