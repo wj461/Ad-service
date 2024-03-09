@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  postgres-ad-db:
+    image: postgres:15.5-alpine3.1db-sql/create-db.sql8
+    container_name: postgres-ad-db
+    restart: always
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
