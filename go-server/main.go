@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -26,8 +27,8 @@ func main() {
 
 	logrus.Info("HTTP server is starting...")
 
-	// restfulHost := viper.GetString("RESTFUL_HOST")
-	// restfulPort := viper.GetString("RESTFUL_PORT")
+	restfulHost := viper.GetString("RESTFUL_HOST")
+	restfulPort := viper.GetString("RESTFUL_PORT")
 	dbDatabase := viper.GetString("DB_DATABASE")
 	dbUser := viper.GetString("POSTGRES_USER")
 	dbPassword := viper.GetString("POSTGRES_PASSWORD")
@@ -47,6 +48,10 @@ func main() {
 	if err = db.Ping(); err != nil {
 		logrus.Fatal(err)
 	}
+
+	router := gin.Default()
+
+	router.Run(restfulHost + ":" + restfulPort)
 
 	defer db.Close()
 }
