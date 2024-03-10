@@ -4,11 +4,16 @@ import (
 	"fmt"
 	"os"
 
+	// "github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
+
+	adHandler "github.com/wj461/ad-service/ad/delivery"
+	adRepository "github.com/wj461/ad-service/ad/repository"
+	adUsecase "github.com/wj461/ad-service/ad/usecase"
 )
 
 func init() {
@@ -50,6 +55,10 @@ func main() {
 	}
 
 	router := gin.Default()
+
+	adPostgresqlRepository := adRepository.NewPostgresqlAdRepository(db)
+	adUsecase := adUsecase.NewAdUsecase(adPostgresqlRepository)
+	adHandler.NewAdHandler(router, adUsecase)
 
 	router.Run(restfulHost + ":" + restfulPort)
 

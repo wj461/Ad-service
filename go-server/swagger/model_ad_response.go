@@ -13,7 +13,7 @@ import (
 )
 
 type AdResponse struct {
-	Title string `db:"title" json:"title"`
+	Title string `json:"title"`
 
-	EndAt time.Time `db:"end_at" json:"endAt"`
+	EndAt time.Time `json:"endAt"`
 }

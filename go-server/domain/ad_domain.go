@@ -1,11 +1,15 @@
 package domain
 
-import "github.com/wj461/ad-service/swagger"
+import (
+	"context"
 
-type adRepository interface {
-	CreateAd(ad *swagger.Ad) error
+	"github.com/wj461/ad-service/swagger"
+)
+
+type AdRepository interface {
+	CreateAd(ctx context.Context, ad *swagger.Ad) error
 }
 
-type adUsecase interface {
-	CreateAd(ad *swagger.Ad) error
+type AdUsecase interface {
+	CreateAd(ctx context.Context, ad *swagger.Ad) error
 }

@@ -3,53 +3,53 @@ info:
   title: Ad-service API
   version: "1.0"
 servers:
-- url: http://localhost:5000/api/v1
+  - url: http://localhost:5000/api/v1
 paths:
   /ad:
     get:
       parameters:
-      - name: offset
-        in: query
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: limit
-        in: query
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: age
-        in: query
-        required: true
-        style: form
-        explode: true
-        schema:
-          type: integer
-      - name: gender
-        in: query
-        required: true
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: country
-        in: query
-        required: true
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: platform
-        in: query
-        required: true
-        style: form
-        explode: true
-        schema:
-          type: string
+        - name: offset
+          in: query
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+        - name: age
+          in: query
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: integer
+        - name: gender
+          in: query
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: string
+        - name: country
+          in: query
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: string
+        - name: platform
+          in: query
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: string
       responses:
         "200":
           description: OK
@@ -58,7 +58,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/adResponse'
+                  $ref: "#/components/schemas/adResponse"
                 x-content-type: application/json
         "400":
           description: Bad Request
@@ -69,7 +69,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ad'
+              $ref: "#/components/schemas/ad"
       responses:
         "201":
           description: Created
@@ -86,6 +86,10 @@ components:
           type: integer
         ageEnd:
           type: integer
+        male:
+          type: boolean
+        female:
+          type: boolean
         country:
           type: array
           items:
@@ -96,9 +100,9 @@ components:
             type: string
     ad:
       required:
-      - endAt
-      - startAt
-      - title
+        - endAt
+        - startAt
+        - title
       type: object
       properties:
         title:
@@ -110,11 +114,11 @@ components:
           type: string
           format: date-time
         conditions:
-          $ref: '#/components/schemas/conditions'
+          $ref: "#/components/schemas/conditions"
     adResponse:
       required:
-      - endAt
-      - title
+        - endAt
+        - title
       type: object
       properties:
         title:

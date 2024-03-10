@@ -13,7 +13,11 @@ type Conditions struct {
 
 	AgeEnd int32 `db:"age_end" json:"ageEnd,omitempty"`
 
-	Country []string `db:"country" json:"country,omitempty"`
+	Male bool `db:"male" json:"male,omitempty"`
 
-	Platform []string `db:"platform" json:"platform,omitempty"`
+	Female bool `db:"female" json:"female,omitempty"`
+
+	Country []string `json:"country,omitempty"`
+
+	Platform []string `json:"platform,omitempty"`
 }

@@ -15,9 +15,9 @@ import (
 type Ad struct {
 	Title string `db:"title" json:"title"`
 
-	StartAt time.Time `db:"start_At" json:"startAt"`
+	StartAt time.Time `db:"start_at" json:"startAt"`
 
 	EndAt time.Time `db:"end_at" json:"endAt"`
 
-	Conditions *Conditions `db:"condition" json:"conditions,omitempty"`
+	Conditions *Conditions `json:"conditions,omitempty"`
 }
