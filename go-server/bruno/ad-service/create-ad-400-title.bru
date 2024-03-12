@@ -1,31 +1,36 @@
 meta {
-  name: create-ad
+  name: create-ad-400-title
   type: http
-  seq: 1
+  seq: 6
 }
 
 post {
-  url: http://localhost:5000/api/v1/ad
+  url: {{localhost}}/ad
   body: json
   auth: none
 }
 
 body:json {
   {
-    "title": "string",
     "startAt": "2024-03-10T07:09:12.278Z",
     "endAt": "2024-03-10T07:09:12.278Z",
     "conditions": {
       "ageStart": 0,
-      "ageEnd": 0,
+      "ageEnd": 10,
       "male": true,
-      "female": true,
+      "female": false,
       "country": [
-        "string"
+        "TW", "JP"
       ],
       "platform": [
-        "string"
+        "ios", "android"
       ]
     }
   }
+}
+
+tests {
+  test("should be able to insert", function() {
+    expect(res.status).to.equal(400);
+  });
 }

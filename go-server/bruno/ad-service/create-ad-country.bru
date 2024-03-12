@@ -1,0 +1,30 @@
+meta {
+  name: create-ad-country
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{localhost}}/ad
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "string",
+    "startAt": "2024-03-10T07:09:12.278Z",
+    "endAt": "2024-03-10T07:09:12.278Z",
+    "conditions": {
+      "country": [
+        "TW", "JP"
+      ]
+    }
+  }
+}
+
+tests {
+  test("Insert ad, country, platform", function() {
+    expect(res.status).to.equal(200);
+  });
+}
