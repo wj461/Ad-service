@@ -1,0 +1,19 @@
+meta {
+  name: search-ad-age
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{localhost}}/ad?offset=0&limit=10&country=TW&platform=ios&gender=F
+  body: none
+  auth: none
+}
+
+query {
+  offset: 0
+  limit: 10
+  country: TW
+  platform: ios
+  gender: F
+}

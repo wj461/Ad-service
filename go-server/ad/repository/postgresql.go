@@ -61,3 +61,29 @@ func (p *postgresqlAdRepository) CreateAd(ctx context.Context, ad *swagger.Ad) e
 
 	return nil
 }
+
+func (p *postgresqlAdRepository) SearchAd(ctx context.Context, adQuery *swagger.AdQuery) (*[]swagger.AdResponse, error) {
+	// How to use the function search_ads IS NOT NULL when the parameter is empty
+	sqlStatement := `
+	SELECT title, end_at FROM search_ads(
+		:age, :gender, :country, :platform, :offset_val, :limit_val
+	)
+	`
+
+	var adResponse []swagger.AdResponse
+	rows, err := p.db.NamedQuery(sqlStatement, adQuery)
+	if err != nil {
+		logrus.Error(err)
+		return nil, err
+	}
+	for rows.Next() {
+		var ad swagger.AdResponse
+		if err = rows.StructScan(&ad); err != nil {
+			logrus.Error(err)
+			return nil, err
+		}
+		adResponse = append(adResponse, ad)
+	}
+
+	return &adResponse, nil
+}

@@ -1,7 +1,7 @@
 meta {
-  name: create-ad-400-startAt
+  name: create-ad-country-platform
   type: http
-  seq: 10
+  seq: 8
 }
 
 post {
@@ -13,24 +13,21 @@ post {
 body:json {
   {
     "title": "string",
+    "startAt": "2024-03-10T07:09:12.278Z",
     "endAt": "2024-03-10T07:09:12.278Z",
     "conditions": {
-      "ageStart": 0,
-      "ageEnd": 10,
-      "male": true,
-      "female": false,
       "country": [
         "TW", "JP"
       ],
       "platform": [
-        "ios", "android"
+        "ios", "android","web"
       ]
     }
   }
 }
 
 tests {
-  test("should be able to insert", function() {
-    expect(res.status).to.equal(400);
+  test("Insert ad, country, platform", function() {
+    expect(res.status).to.equal(200);
   });
 }
