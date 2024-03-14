@@ -29,7 +29,6 @@ func (p *postgresqlAdRepository) CreateAd(ctx context.Context, ad *swagger.Ad) e
 	err := tx.QueryRowx(sqlStatement, ad.Title, ad.StartAt, ad.EndAt, ad.Conditions.AgeStart, ad.Conditions.AgeEnd, ad.Conditions.Male, ad.Conditions.Female).Scan(&ad_id)
 	if err != nil {
 		logrus.Error(err)
-		tx.Rollback()
 		return err
 	}
 	sqlStatement = `
@@ -40,7 +39,6 @@ func (p *postgresqlAdRepository) CreateAd(ctx context.Context, ad *swagger.Ad) e
 		_, err = tx.Exec(sqlStatement, ad_id, country)
 		if err != nil {
 			logrus.Error(err)
-			tx.Rollback()
 			return err
 		}
 	}
@@ -52,10 +50,10 @@ func (p *postgresqlAdRepository) CreateAd(ctx context.Context, ad *swagger.Ad) e
 		_, err = tx.Exec(sqlStatement, ad_id, platform)
 		if err != nil {
 			logrus.Error(err)
-			tx.Rollback()
 			return err
 		}
 	}
+	defer tx.Rollback()
 
 	tx.Commit()
 
@@ -63,7 +61,6 @@ func (p *postgresqlAdRepository) CreateAd(ctx context.Context, ad *swagger.Ad) e
 }
 
 func (p *postgresqlAdRepository) SearchAd(ctx context.Context, adQuery *swagger.AdQuery) (*[]swagger.AdResponse, error) {
-	// How to use the function search_ads IS NOT NULL when the parameter is empty
 	sqlStatement := `
 	SELECT title, end_at FROM search_ads(
 		:age, :gender, :country, :platform, :offset_val, :limit_val
