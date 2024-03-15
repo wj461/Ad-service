@@ -1,0 +1,21 @@
+meta {
+  name: search-ad-platform
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{localhost}}/ad?platform=web
+  body: none
+  auth: none
+}
+
+query {
+  platform: web
+}
+
+tests {
+  test("Search from platform", function() {
+    expect(res.status).to.equal(200);
+  });
+}

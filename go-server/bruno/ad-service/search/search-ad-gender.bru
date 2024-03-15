@@ -1,21 +1,21 @@
 meta {
-  name: search-ad-age
+  name: search-ad-gender
   type: http
-  seq: 5
+  seq: 6
 }
 
 get {
-  url: {{localhost}}/ad?age=20
+  url: {{localhost}}/ad?gender=F
   body: none
   auth: none
 }
 
 query {
-  age: 20
+  gender: F
 }
 
 tests {
-  test("Search from age", function() {
+  test("Search from gender", function() {
     expect(res.status).to.equal(200);
   });
 }

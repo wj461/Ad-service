@@ -1,0 +1,21 @@
+meta {
+  name: search-ad-offset
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{localhost}}/ad?offset=2
+  body: none
+  auth: none
+}
+
+query {
+  offset: 2
+}
+
+tests {
+  test("Search set offset value", function() {
+    expect(res.status).to.equal(200);
+  });
+}

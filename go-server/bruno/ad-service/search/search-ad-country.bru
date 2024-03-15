@@ -1,0 +1,21 @@
+meta {
+  name: search-ad-country
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{localhost}}/ad?country=JP
+  body: none
+  auth: none
+}
+
+query {
+  country: JP
+}
+
+tests {
+  test("Search from country", function() {
+    expect(res.status).to.equal(200);
+  });
+}

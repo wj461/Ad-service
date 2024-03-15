@@ -5,13 +5,17 @@ meta {
 }
 
 get {
-  url: {{localhost}}/ad
+  url: {{localhost}}/ad?limit=10
   body: none
   auth: none
 }
 
+query {
+  limit: 10
+}
+
 tests {
-  test("Insert ad, country, platform", function() {
+  test("Search set limit value", function() {
     expect(res.status).to.equal(200);
   });
 }
