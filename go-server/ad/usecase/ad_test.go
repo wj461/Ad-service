@@ -93,19 +93,24 @@ func TestSearch(t *testing.T) {
 		}, {
 			Title: "Ad 3",
 			EndAt: time.Date(2024, time.August, 12, 12, 0, 0, 0, time.UTC),
+		}, {
+			Title: "Ad 8",
+			EndAt: time.Date(2024, time.August, 17, 12, 0, 0, 0, time.UTC),
+		}, {
+			Title: "Ad 10",
+			EndAt: time.Date(2024, time.August, 19, 12, 0, 0, 0, time.UTC),
 		},
 	}
 	result, err := adPostgresqlRepository.SearchAd(nil, adQuery)
-	logrus.Info(result)
-	logrus.Info(ans)
 	if err != nil {
 		t.Errorf("Error %s", err)
 	}
 
 	if !compareAdResponses(*result, *ans) {
-		t.Errorf("Result was incorrect, Offset = 1, limit = 3)")
+		t.Errorf("Result was incorrect)")
 	}
 }
+
 func compareAdResponses(a, b []swagger.AdResponse) bool {
 	if len(a) != len(b) {
 		return false
