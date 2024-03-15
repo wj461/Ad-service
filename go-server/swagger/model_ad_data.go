@@ -13,11 +13,9 @@ type AdData struct {
 
 	AgeEnd *int `db:"age_end" json:"age_end"`
 
-	Male *bool `db:"male" json:"male"`
-
-	Female *bool `db:"female" json:"female"`
+	Gender *string `db:"gender" json:"gender"`
 
 	Country *[]string `db:"country" json:"country"`
 
-	platform *[]string `db:"platform" json:"platform"`
+	Platform *[]string `db:"platform" json:"platform"`
 }

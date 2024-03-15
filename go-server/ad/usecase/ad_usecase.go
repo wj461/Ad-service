@@ -18,11 +18,6 @@ func NewAdUsecase(adRepo domain.AdRepository) domain.AdUsecase {
 }
 
 func (au *adUsecase) CreateAd(ctx context.Context, ad *swagger.Ad) error {
-	if !ad.Conditions.Male && !ad.Conditions.Female {
-		ad.Conditions.Male = true
-		ad.Conditions.Female = true
-	}
-
 	if ad.Conditions.AgeEnd == 0 {
 		ad.Conditions.AgeEnd = 100
 	}

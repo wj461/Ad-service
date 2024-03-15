@@ -22,11 +22,11 @@ func (p *postgresqlAdRepository) CreateAd(ctx context.Context, ad *swagger.Ad) e
 	tx := p.db.MustBegin()
 	//insert a row into ad table
 	sqlStatement := `
-	INSERT INTO ad (title, start_at, end_at, age_start, age_end, male, female) VALUES 
-	($1, $2, $3, $4, $5, $6, $7) RETURNING ad_id
+	INSERT INTO ad (title, start_at, end_at, age_start, age_end, gender) VALUES 
+	($1, $2, $3, $4, $5, $6) RETURNING ad_id
 	`
 	ad_id := 0
-	err := tx.QueryRowx(sqlStatement, ad.Title, ad.StartAt, ad.EndAt, ad.Conditions.AgeStart, ad.Conditions.AgeEnd, ad.Conditions.Male, ad.Conditions.Female).Scan(&ad_id)
+	err := tx.QueryRowx(sqlStatement, ad.Title, ad.StartAt, ad.EndAt, ad.Conditions.AgeStart, ad.Conditions.AgeEnd, ad.Conditions.Gender).Scan(&ad_id)
 	if err != nil {
 		logrus.Error(err)
 		return err

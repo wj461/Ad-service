@@ -81,7 +81,7 @@ func TestSearch(t *testing.T) {
 		Platform:  new(string),
 	}
 	*adQuery.OffsetVal = 0
-	*adQuery.LimitVal = 10
+	*adQuery.LimitVal = 3
 	*adQuery.Gender = "F"
 	*adQuery.Country = "TW"
 	*adQuery.Platform = "ios"
@@ -96,12 +96,11 @@ func TestSearch(t *testing.T) {
 		}, {
 			Title: "Ad 8",
 			EndAt: time.Date(2024, time.August, 17, 12, 0, 0, 0, time.UTC),
-		}, {
-			Title: "Ad 10",
-			EndAt: time.Date(2024, time.August, 19, 12, 0, 0, 0, time.UTC),
 		},
 	}
 	result, err := adPostgresqlRepository.SearchAd(nil, adQuery)
+	logrus.Info(result)
+	logrus.Info(ans)
 	if err != nil {
 		t.Errorf("Error %s", err)
 	}

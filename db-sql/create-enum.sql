@@ -26,11 +26,17 @@ BEGIN
             'SD', 'SR', 'SJ', 'SE', 'CH', 'SY', 'TW', 'TJ', 'TZ', 'TH', 
             'TL', 'TG', 'TK', 'TO', 'TT', 'TN', 'TR', 'TM', 'TC', 'TV', 
             'UG', 'UA', 'AE', 'GB', 'UM', 'US', 'UY', 'UZ', 'VU', 'VE', 
-            'VN', 'VG', 'VI', 'WF', 'EH', 'YE', 'ZM', 'ZW', ''
+            'VN', 'VG', 'VI', 'WF', 'EH', 'YE', 'ZM', 'ZW'
         );
     END IF;
-END$$;
+END$$
 
 CREATE TYPE platform_type AS ENUM (
-    'android', 'ios', 'web', ''
-);
+    'android', 'ios', 'web'
+)
+
+CREATE TYPE gender_type AS ENUM (
+    'F', 'M'
+)
+
+
