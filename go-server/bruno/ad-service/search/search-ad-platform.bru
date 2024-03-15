@@ -5,17 +5,38 @@ meta {
 }
 
 get {
-  url: {{localhost}}/ad?platform=web
+  url: {{localhost}}/ad?platform=android
   body: none
   auth: none
 }
 
 query {
-  platform: web
+  platform: android
 }
 
 tests {
   test("Search from platform", function() {
     expect(res.status).to.equal(200);
   });
+  
+  test("Result correct", function() {
+    expect(res.getBody()).to.deep.equal([
+    {
+      "title": "Ad 1",
+      "endAt": "2024-08-10T12:00:00Z"
+    }, {
+      "title": "Ad 3",
+      "endAt": "2024-08-12T12:00:00Z"
+    }, {
+      "title": "Ad 4",
+      "endAt": "2024-08-13T12:00:00Z"
+    }, {
+      "title": "Ad 7",
+      "endAt": "2024-08-16T12:00:00Z"
+    }, {
+      "title": "Ad 9",
+      "endAt": "2024-08-18T12:00:00Z"
+    }]);
+  });
+  
 }

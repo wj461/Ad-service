@@ -1,0 +1,26 @@
+meta {
+  name: search-ad-gender-500
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{localhost}}/ad?offset=0&limit=10&age=20&country=TW&platform=web&gender=helicopter
+  body: none
+  auth: none
+}
+
+query {
+  offset: 0
+  limit: 10
+  age: 20
+  country: TW
+  platform: web
+  gender: helicopter
+}
+
+tests {
+  test("Search from full conditions", function() {
+    expect(res.status).to.equal(500);
+  });
+}

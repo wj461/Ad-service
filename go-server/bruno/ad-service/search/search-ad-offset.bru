@@ -18,4 +18,24 @@ tests {
   test("Search set offset value", function() {
     expect(res.status).to.equal(200);
   });
+
+  test("Result correct", function() {
+    expect(res.getBody()).to.deep.equal([
+    {
+      "title": "Ad 3",
+      "endAt": "2024-08-12T12:00:00Z"
+    }, {
+      "title": "Ad 4",
+      "endAt": "2024-08-13T12:00:00Z"
+    }, {
+      "title": "Ad 5",
+      "endAt": "2024-08-14T12:00:00Z"
+    }, {
+      "title": "Ad 6",
+      "endAt": "2024-08-15T12:00:00Z"
+    }, {
+      "title": "Ad 7",
+      "endAt": "2024-08-16T12:00:00Z"
+    }]);
+  });
 }

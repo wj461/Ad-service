@@ -1,0 +1,26 @@
+meta {
+  name: search-ad-country-500
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{localhost}}/ad?offset=0&limit=10&age=20&country=tw&platform=ios&gender=F
+  body: none
+  auth: none
+}
+
+query {
+  offset: 0
+  limit: 10
+  age: 20
+  country: tw
+  platform: ios
+  gender: F
+}
+
+tests {
+  test("Search from full conditions", function() {
+    expect(res.status).to.equal(500);
+  });
+}

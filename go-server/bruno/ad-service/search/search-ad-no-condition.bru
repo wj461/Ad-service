@@ -19,4 +19,18 @@ tests {
   test("Search set offset and limit value", function() {
     expect(res.status).to.equal(200);
   });
+
+  test("Result correct", function() {
+    expect(res.getBody()).to.deep.equal([
+    {
+      "title": "Ad 2",
+      "endAt": "2024-08-11T12:00:00Z"
+    }, {
+      "title": "Ad 3",
+      "endAt": "2024-08-12T12:00:00Z"
+    }, {
+      "title": "Ad 4",
+      "endAt": "2024-08-13T12:00:00Z"
+    }]);
+  });
 }

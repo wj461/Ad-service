@@ -1,0 +1,26 @@
+meta {
+  name: search-ad-platform-500
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{localhost}}/ad?offset=0&limit=10&age=20&country=TW&platform=webbbbbbbbbb&gender=F
+  body: none
+  auth: none
+}
+
+query {
+  offset: 0
+  limit: 10
+  age: 20
+  country: TW
+  platform: webbbbbbbbbb
+  gender: F
+}
+
+tests {
+  test("Search from full conditions", function() {
+    expect(res.status).to.equal(500);
+  });
+}
