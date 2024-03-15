@@ -17,3 +17,9 @@ query {
   platform: ios
   gender: F
 }
+
+tests {
+  test("Insert ad, country, platform", function() {
+    expect(res.status).to.equal(200);
+  });
+}

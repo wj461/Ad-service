@@ -9,3 +9,9 @@ get {
   body: none
   auth: none
 }
+
+tests {
+  test("Insert ad, country, platform", function() {
+    expect(res.status).to.equal(200);
+  });
+}

@@ -84,3 +84,28 @@ func (p *postgresqlAdRepository) SearchAd(ctx context.Context, adQuery *swagger.
 
 	return &adResponse, nil
 }
+
+func (p *postgresqlAdRepository) ResetDB(ctx context.Context) error {
+	tx := p.db.MustBegin()
+	defer tx.Rollback()
+
+	sqlStatement := `
+	SELECT reset_db()
+	`
+	_, err := tx.Exec(sqlStatement)
+	if err != nil {
+		logrus.Error(err)
+		return err
+	}
+	sqlStatement = `
+	SELECT init_db()
+	`
+	_, err = tx.Exec(sqlStatement)
+	if err != nil {
+		logrus.Error(err)
+		return err
+	}
+
+	tx.Commit()
+	return nil
+}

@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: {{localhost}}/ad?offset=0&limit=10&age=30&country=TW&platform=ios
+  url: {{localhost}}/ad?offset=0&limit=10&age=20&country=TW&platform=ios&gender=F
   body: none
   auth: none
 }
@@ -13,7 +13,14 @@ get {
 query {
   offset: 0
   limit: 10
-  age: 30
+  age: 20
   country: TW
   platform: ios
+  gender: F
+}
+
+tests {
+  test("Insert ad, country, platform", function() {
+    expect(res.status).to.equal(200);
+  });
 }

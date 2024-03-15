@@ -5,12 +5,18 @@ meta {
 }
 
 get {
-  url: {{localhost}}/ad?offset=0&limit=10
+  url: {{localhost}}/ad?offset=1&limit=3
   body: none
   auth: none
 }
 
 query {
-  offset: 0
-  limit: 10
+  offset: 1
+  limit: 3
+}
+
+tests {
+  test("Insert ad, country, platform", function() {
+    expect(res.status).to.equal(200);
+  });
 }

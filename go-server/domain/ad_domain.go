@@ -10,9 +10,11 @@ type AdRepository interface {
 	CreateAd(ctx context.Context, ad *swagger.Ad) error
 	// CheckAd(ctx context.Context, ad *swagger.Ad) (*swagger.AdData, error)
 	SearchAd(ctx context.Context, adQuery *swagger.AdQuery) (*[]swagger.AdResponse, error)
+	ResetDB(ctx context.Context) error
 }
 
 type AdUsecase interface {
 	CreateAd(ctx context.Context, ad *swagger.Ad) error
 	SearchAd(ctx context.Context, adQuery *swagger.AdQuery) (*[]swagger.AdResponse, error)
+	ResetDB(ctx context.Context) error
 }

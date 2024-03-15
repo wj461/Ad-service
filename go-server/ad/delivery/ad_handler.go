@@ -21,6 +21,7 @@ func NewAdHandler(e *gin.Engine, adUsecase domain.AdUsecase) {
 	{
 		v1.POST("/ad", handler.CreateAd)
 		v1.GET("/ad", handler.SearchAd)
+		v1.POST("/reset", handler.ResetDB)
 	}
 }
 
@@ -58,4 +59,14 @@ func (ah *adHandler) SearchAd(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, adResponse)
+}
+
+func (ah *adHandler) ResetDB(c *gin.Context) {
+	err := ah.adUsecase.ResetDB(c)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.Status(http.StatusOK)
 }
